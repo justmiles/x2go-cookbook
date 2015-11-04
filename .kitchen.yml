@@ -1,0 +1,23 @@
+---
+driver:
+  name: vagrant
+  box: npalm/mint17-amd64-cinnamon
+  require_chef_omnibus: 12.5.1
+  insecure: true
+  customize:
+    natdnshostresolver1: "on"
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: linuxmint17
+
+suites:
+  - name: default
+    run_list:
+      - recipe[x2go]
+      - recipe[x2go::server]
+      - recipe[x2go::xfce4]
+      - recipe[x2go::mate]
+    attributes:
